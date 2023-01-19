@@ -66,6 +66,10 @@ public class EditItemActivity extends AppCompatActivity{
         item_list.loadItems(context);
         contact_list.loadContacts(context);
 
+        for (Contact c: contact_list.getContacts()) {
+            System.out.println(c.getUsername());
+        }
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_dropdown_item, contact_list.getAllUsernames());
         borrower_spinner.setAdapter(adapter);
@@ -150,6 +154,7 @@ public class EditItemActivity extends AppCompatActivity{
         Contact contact = null;
         if (!status.isChecked()) {
             String borrower_str = borrower_spinner.getSelectedItem().toString();
+            System.out.println(borrower_str);
             contact = contact_list.getContactByUsername(borrower_str);
         }
 
