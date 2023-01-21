@@ -133,9 +133,11 @@ public class EditItemActivity extends AppCompatActivity{
     }
 
     public void deleteItem(View view) {
-        item_list.deleteItem(item);
-
-        item_list.saveItems(context);
+        DeleteItemCommand deleteItemCommand = new DeleteItemCommand(item_list, item, context);
+        deleteItemCommand.execute();
+        if (!deleteItemCommand.isExecuted()) {
+            return;
+        }
 
         // End EditItemActivity
         Intent intent = new Intent(this, MainActivity.class);
@@ -201,9 +203,12 @@ public class EditItemActivity extends AppCompatActivity{
             updated_item.setBorrower(contact);
         }
 
-        item_list.addItem(updated_item);
-
-        item_list.saveItems(context);
+        // Edit item
+        EditItemCommand editItemCommand = new EditItemCommand(item_list, item, updated_item, context);
+        editItemCommand.execute();
+        if (!editItemCommand.isExecuted()) {
+            return;
+        }
 
         // End EditItemActivity
         Intent intent = new Intent(this, MainActivity.class);
