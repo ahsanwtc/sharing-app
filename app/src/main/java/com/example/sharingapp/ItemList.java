@@ -85,9 +85,9 @@ public class ItemList {
             gson.toJson(items, osw);
             osw.flush();
             fos.close();
-            return false;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+            return false;
         } catch (IOException e) {
             e.printStackTrace();
             return false;
