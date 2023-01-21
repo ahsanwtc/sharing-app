@@ -193,7 +193,7 @@ public class EditItemActivity extends AppCompatActivity{
         }
 
         String id = item.getId(); // Reuse the item id
-        item_list.deleteItem(item);
+        // item_list.deleteItem(item);
 
         Item updated_item = new Item(title_str, maker_str, description_str, dimensions, image, id);
 
