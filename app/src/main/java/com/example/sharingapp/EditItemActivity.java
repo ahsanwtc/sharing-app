@@ -156,7 +156,7 @@ public class EditItemActivity extends AppCompatActivity implements Observer {
             return;
         }
 
-        String id = item.getId(); // Reuse the item id
+        String id = itemController.getId(); // Reuse the item id
         Item updated_item = new Item(title_str, maker_str, description_str, image, id);
         ItemController updatedItemController = new ItemController(updated_item);
         updatedItemController.setDimensions(length_str, width_str, height_str);
@@ -213,8 +213,10 @@ public class EditItemActivity extends AppCompatActivity implements Observer {
         if (on_create_update) {
             adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_dropdown_item,
-                contactListController.getAllUsernames(), borrower_spinner.setAdapter(adapter));
+                contactListController.getAllUsernames());
 
+            borrower_spinner.setAdapter(adapter);
+            System.out.println("position: " + pos);
             item = itemListController.getItem(pos);
             itemController = new ItemController(item);
 
