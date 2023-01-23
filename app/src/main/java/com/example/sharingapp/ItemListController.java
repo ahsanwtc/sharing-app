@@ -4,7 +4,7 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
-public class ItemListController extends Observerable {
+public class ItemListController {
   private ItemList itemList;
 
   public ItemListController(ItemList itemList){
