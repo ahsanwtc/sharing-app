@@ -22,7 +22,7 @@ public class Item extends Observerable {
     protected String image_base64;
     private String id;
 
-    public Item(String title, String maker, String description, Dimensions dimensions, Bitmap image,
+    public Item(String title, String maker, String description, Bitmap image,
                 String id) {
         this.title = title;
         this.maker = maker;
