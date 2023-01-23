@@ -14,7 +14,7 @@ import java.io.OutputStreamWriter;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-public class ContactList {
+public class ContactList extends Observerable {
   private ArrayList<Contact> contacts;
   private String FILENAME = "contacts.sav";
 
@@ -28,6 +28,7 @@ public class ContactList {
 
   public void setContacts(ArrayList<Contact> contacts) {
     this.contacts = contacts;
+    notifyObservers();
   }
 
   public ArrayList<String> getAllUsernames() {
@@ -40,10 +41,12 @@ public class ContactList {
 
   public void addContact(Contact contact) {
     contacts.add(contact);
+    notifyObservers();
   }
 
   public void deleteContact(Contact contact) {
     contacts.remove(contact);
+    notifyObservers();
   }
 
   public Contact getContact(int index) {
@@ -96,6 +99,7 @@ public class ContactList {
     } catch (IOException e) {
       contacts = new ArrayList<Contact>();
     }
+    notifyObservers();
   }
 
   public boolean saveContacts(Context context) {
