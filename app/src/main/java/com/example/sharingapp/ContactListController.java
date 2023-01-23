@@ -62,4 +62,21 @@ public class ContactListController {
   public void removeObserver(Observer observer) {
     contacts.removeObserver(observer);
   }
+  public boolean addContact(Contact contact, Context context){
+    AddContactCommand addContactCommand = new AddContactCommand(contacts, contact, context);
+    addContactCommand.execute();
+    return addContactCommand.isExecuted();
+  }
+
+  public boolean deleteContact(Contact contact, Context context) {
+    DeleteContactCommand deleteContactCommand = new DeleteContactCommand(contacts, contact, context);
+    deleteContactCommand.execute();
+    return deleteContactCommand.isExecuted();
+  }
+
+  public boolean editContact(Contact contact, Contact updatedContact, Context context){
+    EditContactCommand editContactCommand = new EditContactCommand(contacts, contact, updatedContact, context);
+    editContactCommand.execute();
+    return editContactCommand.isExecuted();
+  }
 }
